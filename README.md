@@ -1,5 +1,5 @@
 # Blackjack Project
-
+Presentation slides: https://docs.google.com/presentation/d/1vaUDYvFktVIbciKOHehiPcq5NVJAISBNm8QCSGUpTwc/edit?usp=sharing  
 ## Overview
 Creating an application in which players can play virtual blackjack alongside a trained blackjack-playing bot.  
 
@@ -73,6 +73,10 @@ tensorflow==2.10.0
 - `gym` is a python library that contains many prebuilt environments, including one for Blackjack, for performing reinforcement learning, but also provides an API for design custom environments.
 - `gym` was originally created by OpenAI, but OpenAI shifted focus away from it and stopped maintaining it. The Farama Foundation created a fork of it, `gymnasium`, to continue improving and maintaining the project. `gym` and `gymnasium` are mostly identical, with gymnasium being backward-compatible, and having a few improvements and bug fixes.
 
+## Agent Training Results
+- Through playing 25,000 simulated games, the bot started with an average reward of about -0.5 and quickly raised that to -0.2 over the first 5,000 games that it played.
+- It's important to note that the nature of Blackjack is that it is heavily based on luck, and that strategy is mostly centered around trying to lose less often. So while a reward rate of -0.2 indeed indicates losing more than winning, this isn't far off from the performance of a human blackjack player. [playtoday.co](https://playtoday.co/blog/blackjack-odds/#:~:text=It's%20played%20with%20eight%20decks,in%20classic%20blackjack%20is%204.75%25.) reports that the typical odds for a player in Blackjack is 42.22%, which would be roughly equivalent to a reward rate of -0.15.
+
 ## Application
 - After training a bot to play Blackjack, we developed functions to create an application that is a playable version of Blackjack, in which a human player can play against the dealer, and the trained bot.
 - `gradio` was used to create a user interface for interacting with the application.
@@ -80,3 +84,30 @@ tensorflow==2.10.0
 - Instead of going that route, we chose to upload the gradio application to Hugging Face
     - Hugging Face is able to host the entire application on their cloud service for free (with limited virtual CPU and memory)
     - This makes the application available 24/7 with no additional maintenance required from us
+
+## Game Application Code, Recommendation System, Splitting  
+###	Game Code  
+-	Created a bunch of initial functions to define the logic of our game (create deck, calculate score, has usable ace, get state, get card value, reset game, etc.)  
+-	Added the bot function that will make decisions for the machine/bot hand as well as the recommendation system function for the player hand (bot decision and get recommendation)  
+-	Included functions to get the card image paths and give them appropriate sizes (get card image and resize image)  
+-	Now added the main game functions (play blackjack and determine winner, which go through the game and output the winner logic)  
+-	We then jump into our UI Gradio interface to provide the user with a seamless and fun playing experience against the dealer and alongside our bot  
+
+
+###	Recommendation System  
+-	We wanted to add a simple recommendation system for the player to follow certain basic rules of blackjack if they desire.  
+-	If we had more time we would have had a more robust recommendation system based on large blackjack datasets and winning probabilities.  
+-	The simple rules are as follows:  
+    -	Hit when below 11  
+    -	Stand if the score is 12 and the dealer up card is 4, 5, or 6  
+    -	Stand if the score is between 13 and 16 and the dealer up card is between 2 and 7  
+    -	Stand if the score is 17 or more  
+    -	Else, hit  
+
+###	Splitting  
+-	The splits section was added to improve the game play and could be added as feature in future releases for the bot to be trained on. We only allowed the game to split once as we were using a single deck in the shoe. However, as we add additional decks to the shoe we can allow for more splits eventually to the game play and for the bot to be trained on.
+  -	Some features about splitting in the game:  
+    -	Each new hand will start with one of the original cards and one new card.  
+    -	You will play each hand separately.  
+    -	After playing the first hand, the game will prompt you to play the split hand.  
+    -	Once you stand on the split hand the dealer hand will be played, and the outcome of the game will be concluded.  
