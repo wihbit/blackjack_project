@@ -1,11 +1,11 @@
 # Blackjack Project
 
 ## Overview
-Creating an application in which players can play virtual blackjack alongside a trained blackjack-playing bot.
+Creating an application in which players can play virtual blackjack alongside a trained blackjack-playing bot.  
 
 ## Notebooks
-`deep_q_learning.ipynb` Demonstrates the process of building and training a deep Q-learning agent in the Blackjack environment
-`blackjack_application.ipynb` Demonstrates creating a usable blackjack application and integrating the trained agent in it as a player
+`deep_q_learning.ipynb` Demonstrates the process of building and training a deep Q-learning agent in the Blackjack environment  
+`blackjack_application.ipynb` Demonstrates creating a usable blackjack application and integrating the trained agent in it as a player  
 
 ## Requirements
 ```
@@ -68,15 +68,15 @@ tensorflow==2.10.0
 - Ending with high exploitation (low exploration) is necessary to confirm and refine the learned q-values
 
 ## gym/gymnasium
-gym: https://www.gymlibrary.dev/index.html  
-gymnasium: https://gymnasium.farama.org/  
-- 'gym' is a python library that contains many prebuilt environments, including one for Blackjack, for performing reinforcement learning, but also provides an API for design custom environments.
-- gym was originally created by OpenAI, but OpenAI shifted focus away from it and stopped maintaining it. The Farama Foundation created a fork of it, called 'gymnasium', to continue improving and maintaining the project. gym and gymnasium are mostly identical, with gymnasium being backward-compatible, and having a few improvements and bug fixes.
+`gym`: https://www.gymlibrary.dev/index.html  
+`gymnasium`: https://gymnasium.farama.org/  
+- `gym` is a python library that contains many prebuilt environments, including one for Blackjack, for performing reinforcement learning, but also provides an API for design custom environments.
+- `gym` was originally created by OpenAI, but OpenAI shifted focus away from it and stopped maintaining it. The Farama Foundation created a fork of it, `gymnasium`, to continue improving and maintaining the project. `gym` and `gymnasium` are mostly identical, with gymnasium being backward-compatible, and having a few improvements and bug fixes.
 
 ## Application
 - After training a bot to play Blackjack, we developed functions to create an application that is a playable version of Blackjack, in which a human player can play against the dealer, and the trained bot.
-- Gradio was used to create a user interface for interacting with the application.
+- `gradio` was used to create a user interface for interacting with the application.
 - Gradio apps can be launched locally. They can create temporary instances that can be shared over the web, but the app's backend processes would still happen locally, requiring the host machine to remain active.
-- Instead of going that route, we chose to upload the Gradio application to Hugging Face
+- Instead of going that route, we chose to upload the gradio application to Hugging Face
     - Hugging Face is able to host the entire application on their cloud service for free (with limited virtual CPU and memory)
     - This makes the application available 24/7 with no additional maintenance required from us
