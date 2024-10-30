@@ -14,7 +14,17 @@ tensorflow==2.10.0
 ```
 
 ## How to use
-placeholder text
+1. To use the interactive app, go to https://huggingface.co/spaces/wihbit/blackjack_gradio  
+2. Start your first game by clicking 'Reset'. This will deal a blackjack hand to you, the dealer, and a trained bot.  
+3. Each turn, decide if you will hit, stand, or split. Split is only available if you are dealt two of the same card (different suites)
+    - A recommended choice will be shown to you
+    - If you are able to split, you will have two separate hands to play. You will be prompted to choose to hit or stand on each one separately.
+5. Click 'Submit' to lock in your choice.
+    - Like in Vegas, the dealer will hit or stand based on a strict set of rules.  
+    - The bot will hit or stand based on its learned programming.
+    - Neither the bot nor the dealer are programmed to split
+6. When the game is over, each player's outcome will be displayed.
+7. Click 'Reset' to start a new game
 
 ## Using machine learning to train a model to play a game
 
@@ -58,8 +68,10 @@ https://gymnasium.farama.org/
 - 'gym' is a python library that contains many prebuilt environments, including one for Blackjack, for performing reinforcement learning, but also provides an API for design custom environments.
 - gym was originally created by OpenAI, but OpenAI shifted focus away from it and stopped maintaining it. The Farama Foundation created a fork of it, called 'gymnasium', to continue improving and maintaining the project. gym and gymnasium are mostly identical, with gymnasium being backward-compatible, and having a few improvements and bug fixes.
 
-## Gradio
-placeholder text  
-
-## Recommendation LLM
-placeholder text  
+## Application
+- After training a bot to play Blackjack, we developed functions to create an application that is a playable version of Blackjack, in which a human player can play against the dealer, and the trained bot.
+- Gradio was used to create a user interface for interacting with the application.
+- Gradio apps can be launched locally. They can create temporary instances that can be shared over the web, but the app's backend processes would still happen locally, requiring the host machine to remain active.
+- Instead of going that route, we chose to upload the Gradio application to Hugging Face
+    - Hugging Face is able to host the entire application on their cloud service for free (with limited virtual CPU and memory)
+    - This makes the application available 24/7 with no additional maintenance required from us
