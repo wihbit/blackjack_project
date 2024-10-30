@@ -3,6 +3,10 @@
 ## Overview
 Creating an application in which players can play virtual blackjack alongside a trained blackjack-playing bot.
 
+## Notebooks
+`deep_q_learning.ipynb` Demonstrates the process of building and training a deep Q-learning agent in the Blackjack environment
+`blackjack_application.ipynb` Demonstrates creating a usable blackjack application and integrating the trained agent in it as a player
+
 ## Requirements
 ```
 python==3.10.14
