@@ -1,7 +1,7 @@
 # Blackjack Project
 
 ## Overview
-Creating an application in which players can play virtual blackjack alongside a blackjack-playing bot, while receiving AI-generated tips and suggestions based on their hand.
+Creating an application in which players can play virtual blackjack alongside a trained blackjack-playing bot.
 
 ## Requirements
 ```
@@ -64,7 +64,8 @@ tensorflow==2.10.0
 - Ending with high exploitation (low exploration) is necessary to confirm and refine the learned q-values
 
 ## gym/gymnasium
-https://gymnasium.farama.org/
+gym: https://www.gymlibrary.dev/index.html  
+gymnasium: https://gymnasium.farama.org/  
 - 'gym' is a python library that contains many prebuilt environments, including one for Blackjack, for performing reinforcement learning, but also provides an API for design custom environments.
 - gym was originally created by OpenAI, but OpenAI shifted focus away from it and stopped maintaining it. The Farama Foundation created a fork of it, called 'gymnasium', to continue improving and maintaining the project. gym and gymnasium are mostly identical, with gymnasium being backward-compatible, and having a few improvements and bug fixes.
 
